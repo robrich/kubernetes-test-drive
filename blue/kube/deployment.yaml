@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubedemo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubedemo
+  template:
+    # the pod.yaml file ... except:
+    # no apiVersion or kind
+    metadata:
+      # no name
+      labels:
+        app: kubedemo
+        version: v1
+    spec:
+      containers:
+      - name: kubedemo
+        image: kubedemo:v1
+        ports:
+        - containerPort: 80

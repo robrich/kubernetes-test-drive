@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubedemo-ingress
+  annotations:
+    ingress.kubernetes.io/enable-cors: 'true'
+spec:
+  #backend:
+  #  serviceName: other
+  #  servicePort: 80
+  #tls:
+  #- hosts:
+  #  - www.netcats.io
+  #  secretName: kubedemo-secret
+  rules:
+  - host: kubedemo.io
+    http:
+      paths:
+      - backend:
+          serviceName: kubedemo-service
+          servicePort: 80
+        #path: /
